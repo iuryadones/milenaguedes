@@ -41,7 +41,7 @@ pub const SERVICES: &[Service] = &[
         title: "Ventosaterapia",
         description: "Ative a circulação e liberte dores profundas. Uma técnica ancestral que seu corpo agradece.",
         icon: "🔥",
-        duration: "45 min",
+        duration: "60 min",
     },
     Service {
         id: "ritual-premium",

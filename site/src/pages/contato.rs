@@ -73,7 +73,8 @@ pub fn contact_page() -> Html {
                             width="100%" height="380" style="border:0;"
                             allowfullscreen={true}
                             loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Mapa do consultório Milena Guedes">
                         </iframe>
                     </div>
                 </div>

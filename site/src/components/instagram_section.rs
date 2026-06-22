@@ -19,6 +19,7 @@ pub fn instagram_section() -> Html {
                         scrolling="no"
                         allowtransparency="true"
                         style="border-radius: 16px;"
+                        title="Perfil do Instagram @milenaguedesintegrativa"
                     >
                     </iframe>
                 </div>

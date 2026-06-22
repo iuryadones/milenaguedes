@@ -31,8 +31,11 @@ fn switch(route: Route) -> Html {
 pub fn app() -> Html {
     html! {
         <BrowserRouter>
+            <a href="#main-content" class="skip-link">
+                { "Pular para o conteúdo" }
+            </a>
             <Navbar />
-            <main>
+            <main id="main-content">
                 <Switch<Route> render={switch} />
             </main>
             <Footer />

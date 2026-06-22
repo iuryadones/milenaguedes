@@ -1,0 +1,13 @@
+pub mod navbar;
+pub mod footer;
+pub mod hero;
+pub mod service_card;
+pub mod whatsapp_button;
+pub mod cta_section;
+pub mod not_found;
+pub mod lgpd_notice;
+pub mod diferenciais;
+pub mod process_steps;
+pub mod instagram_section;
+pub mod depoimentos;
+pub mod faq_section;

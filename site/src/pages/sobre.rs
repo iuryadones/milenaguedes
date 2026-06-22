@@ -16,7 +16,7 @@ pub fn about_page() -> Html {
             <section class="section">
                 <div class="container about-content">
                     <div class="about-image">
-                        <img src="assets/images/milena_guedes.jpeg" alt="Milena Guedes — Massoterapeuta Integrativa" class="about-photo" />
+                        <img src="/assets/images/milena_guedes.jpeg" alt="Milena Guedes — Massoterapeuta Integrativa" class="about-photo" />
                     </div>
                     <div class="about-text">
                         <h2>{ "Massoterapeuta Integrativa" }</h2>

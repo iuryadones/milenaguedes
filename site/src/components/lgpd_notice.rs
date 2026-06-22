@@ -2,7 +2,15 @@ use yew::prelude::*;
 
 #[function_component(LGPDNotice)]
 pub fn lgpd_notice() -> Html {
-    let visible = use_state(|| true);
+    let visible = use_state(|| {
+        let mut accepted = false;
+        if let Some(Ok(Some(storage))) = web_sys::window().map(|w| w.local_storage()) {
+            if let Ok(Some(val)) = storage.get_item("lgpd-accepted") {
+                accepted = val == "true";
+            }
+        }
+        !accepted
+    });
 
     if !*visible {
         return html! {};

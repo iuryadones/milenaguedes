@@ -5,8 +5,8 @@
 
 ## Deploy
 - **Domínio:** milenaguedes.com
-- **master**: código fonte (Rust + CSS + docs)
-- **gh-pages**: apenas build estático (`dist/`: index.html, .wasm, .js, .css, _redirects, CNAME)
+- **master**: código fonte (Rust + CSS + docs + `assets/`)
+- **gh-pages**: apenas build estático (`dist/`: index.html, .wasm, .js, .css, _redirects, CNAME, `assets/`)
 - Build: `trunk build --release --public-url /`
 - `make deploy` gera `dist/` + `_redirects` + `CNAME`
 - DNS: 4 registros A (GitHub IPs) + CNAME www → iuryadones.github.io
@@ -287,8 +287,9 @@ Diferencial {
 ```
 
 ### Trocar foto placeholder
-1. Adicionar foto em `public/assets/images/` (Trunk copia `public/` → `dist/`)
-2. Substituir `div.image-placeholder` em `sobre.rs` por `<img src="assets/images/nome.jpg" alt="Milena Guedes" class="about-photo" />`
+1. Adicionar foto em `assets/images/` (ex: `nome.jpg`)
+2. Em `index.html`, adicionar: `<link data-trunk rel="copy-dir" href="assets" />`
+3. Em `sobre.rs`: `<img src="/assets/images/nome.jpg" alt="..." class="about-photo" />`
 
 ### Adicionar depoimentos reais
 1. Criar array `DEPOIMENTOS` em `models.rs` com `autor`, `texto`, `foto`.

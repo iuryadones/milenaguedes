@@ -226,7 +226,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(160deg, var(--beige) 0%, var(--beige-light) 40%, var(--beige) 100%);
+  background: linear-gradient(160deg, var(--beige) 0%, var(--beige-light) 40%, rgba(196, 163, 61, 0.06) 100%);
   position: relative;
   text-align: center;
   overflow: hidden;
@@ -292,7 +292,8 @@ main {
 .page-header {
   padding: 3rem 0 2rem;
   text-align: center;
-  background: var(--beige);
+  background: var(--white);
+  border-bottom: 3px solid var(--gold);
 }
 
 .page-header h1 {
@@ -385,7 +386,7 @@ main {
 /* ─── Diferenciais ─── */
 
 .section-diferenciais {
-  background: var(--beige-light);
+  background: var(--white);
 }
 
 .diferenciais-grid {
@@ -489,7 +490,7 @@ main {
 /* ─── Instagram ─── */
 
 .section-instagram {
-  background: var(--beige-light);
+  background: var(--white);
 }
 
 .instagram-embed {
@@ -618,7 +619,7 @@ main {
 }
 
 .section-philosophy {
-  background: var(--beige-light);
+  background: var(--white);
 }
 
 .philosophy-content {
@@ -838,7 +839,7 @@ main {
 
 .footer-brand > p {
   font-size: 0.9rem;
-  color: var(--black-soft);
+  color: var(--beige);
   margin-bottom: 1rem;
 }
 
@@ -899,7 +900,7 @@ main {
 /* ─── Section Alternating Backgrounds ─── */
 
 .section:nth-child(even) {
-  background: var(--beige-light);
+  background: var(--white);
 }
 
 /* ─── Responsive ─── */

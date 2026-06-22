@@ -27,6 +27,7 @@ clean:
 	@echo "✅ Projeto limpo."
 
 deploy: build
+	cp dist/index.html dist/404.html
 	echo "/* /index.html 200" > dist/_redirects
 	echo "milenaguedes.com" > dist/CNAME
 	@echo ""

@@ -71,6 +71,20 @@ pub const SERVICES: &[Service] = &[
         icon: "🌸",
         duration: "60 min",
     },
+    Service {
+        id: "tantrica",
+        title: "Terapia Tântrica",
+        description: "Um convite para desacelerar, sentir e se reconectar com o próprio corpo. Liberação de bloqueios emocionais, redução da ansiedade e aumento da autoestima em um espaço seguro e acolhedor.",
+        icon: "🕯️",
+        duration: "90 min",
+    },
+    Service {
+        id: "escuta-ativa",
+        title: "Escuta Ativa",
+        description: "Suas emoções falam, mas seu corpo sente primeiro. Em um espaço seguro, livre de julgamentos, Milena ouve o que sua história tem a dizer e, com técnicas de psicanálise, ajuda você a liberar tensões emocionais que travam seu corpo. Uma conversa que cura.",
+        icon: "🎧",
+        duration: "60 min",
+    },
 ];
 
 pub struct FAQItem {

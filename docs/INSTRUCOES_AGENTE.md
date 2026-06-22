@@ -275,14 +275,20 @@ Diferencial {
 ### Alterar cores
 ```css
 /* css/styles.css — :root */
---green-sage: #8FBC8F;
---terracotta: #D4A574;
---sand: #F5EDE0;
---brown-dark: #4A3F35;
+--gold: #C4A33D;         /* botões, CTAs, acentos */
+--gold-dark: #9E8328;    /* hover/active */
+--gold-light: #D4B351;   /* badges, tags sutis */
+--beige: #F0EADE;        /* fundos alternados */
+--beige-light: #F8F4ED;  /* fundo principal */
+--black: #1C1C1C;        /* texto, footer */
+--black-soft: #5A5A5A;   /* texto secundário */
+--white: #FFFFFF;         /* cards */
+--whatsapp-green: #25D366; /* mantido */
 ```
 
 ### Trocar foto placeholder
-Substituir o `div.image-placeholder` em `sobre.rs` por `<img src="assets/images/milena.jpg" alt="Milena Guedes">`.
+1. Adicionar foto em `public/assets/images/` (Trunk copia `public/` → `dist/`)
+2. Substituir `div.image-placeholder` em `sobre.rs` por `<img src="assets/images/nome.jpg" alt="Milena Guedes" class="about-photo" />`
 
 ### Adicionar depoimentos reais
 1. Criar array `DEPOIMENTOS` em `models.rs` com `autor`, `texto`, `foto`.

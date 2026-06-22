@@ -4,9 +4,32 @@
 - Rust + Yew.rs 0.21 (CSR), yew-router 0.18, Trunk, CSS puro
 
 ## Deploy
-- `main`: código fonte; `gh-pages`: apenas `dist/` (build manual, sem CI)
-- Build: `trunk build --release --public-url /milenaguedesintegrativa/`
-- Incluir `_redirects` em `dist/` para SPA no GitHub Pages
+- **Domínio:** milenaguedes.com
+- **master**: código fonte (Rust + CSS + docs)
+- **gh-pages**: apenas build estático (`dist/`: index.html, .wasm, .js, .css, _redirects, CNAME)
+- Build: `trunk build --release --public-url /`
+- `make deploy` gera `dist/` + `_redirects` + `CNAME`
+- DNS: 4 registros A (GitHub IPs) + CNAME www → iuryadones.github.io
+
+### GitHub Pages (configuração única)
+1. Repo → Settings → Pages
+2. Source: **gh-pages** / **(root)**
+3. Custom domain: `milenaguedes.com`
+4. HTTPS automático via Let's Encrypt (minutos após DNS propagar)
+
+### DNS (Unstoppable Domains)
+- **Antes:** desativar **Domain Forwarding** no painel do Unstoppable (Forwarding → desativar)
+- **Depois:** adicionar no DNS Management:
+
+| Tipo | Nome | Valor | TTL |
+|------|------|-------|-----|
+| `A` | `@` | `185.199.108.153` | 3600 |
+| `A` | `@` | `185.199.109.153` | 3600 |
+| `A` | `@` | `185.199.110.153` | 3600 |
+| `A` | `@` | `185.199.111.153` | 3600 |
+| `CNAME` | `www` | `iuryadones.github.io` | 3600 |
+
+---
 
 ## Comandos
 
@@ -16,7 +39,7 @@
 | `make run` | Servidor dev :8080 |
 | `make check` | Verifica compilação (wasm32) |
 | `make build` | Build produção → `dist/` |
-| `make deploy` | Build + gera `_redirects` |
+| `make deploy` | Build + gera `_redirects` + `CNAME` |
 | `make clean` | Remove artefatos |
 
 ---

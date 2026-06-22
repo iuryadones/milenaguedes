@@ -50,6 +50,6 @@ help:
 	@echo "  make check   — Verifica compilação (wasm)"
 	@echo "  make test    — Alias para check"
 	@echo "  make clean   — Remove build + cache"
-	@echo "  make deploy  — Build + gera _redirects"
+	@echo "  make deploy  — Build + gera _redirects + CNAME"
 	@echo "  make help    — Mostra esta mensagem"
 	@echo "═══════════════════════════════════════════════════"

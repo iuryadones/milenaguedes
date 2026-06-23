@@ -166,7 +166,7 @@ impl SiteConfig {
     pub const PHONE: &'static str = "5581996589013";
     pub const PHONE_DISPLAY: &'static str = "(81) 9.9658-9013";
     pub const INSTAGRAM_URL: &'static str = "https://www.instagram.com/milenaguedesintegrativa/";
-    pub const ADDRESS: &'static str = "Rua Major Médico Vicente da Fonseca de Matos, nº 335 - AP 02, Candeias, Jaboatão dos Guararapes - PE, 54440-370";
+    pub const ADDRESS: &'static str = "Rua Major Médico Vicente da Fonseca de Matos, n. 335 - AP 02, Candeias, Jaboatão dos Guararapes - PE, 54440-370";
     pub const PLACE_NAME: &'static str = "Espaço Milena Guedes Massoterapia";
     pub const PLACE_URL: &'static str = "https://www.google.com/maps/place/?q=place_id:0x7aae1b51cd72ec3:0x93452840940145b8";
     pub const HOURS: &'static str = "Segunda a Sexta: 12h – 20h";

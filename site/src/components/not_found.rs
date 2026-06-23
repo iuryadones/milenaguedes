@@ -14,10 +14,10 @@ pub fn not_found_page() -> Html {
         <section class="page-header" style="min-height: 60vh; display: flex; align-items: center; justify-content: center;">
             <div class="container" style="text-align: center;">
                 <h1 style="font-size: 4rem; margin-bottom: 0.5rem;">{ "404" }</h1>
-                <p style="font-size: 1.2rem; color: var(--black-soft, #5A5A5A); margin-bottom: 1rem;">
+                <p style="font-size: 1.2rem; color: var(--black-soft, #3A3A3A); margin-bottom: 1rem;">
                     { "Página não encontrada" }
                 </p>
-                <p style="margin-bottom: 2rem; color: var(--black-soft, #5A5A5A);">
+                <p style="margin-bottom: 2rem; color: var(--black-soft, #3A3A3A);">
                     { "A página que você procura não existe ou foi movida." }
                 </p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">

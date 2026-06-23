@@ -6,9 +6,9 @@
 ## Deploy
 - **Domínio:** milenaguedes.com
 - **master**: código fonte (Rust + CSS + docs + `assets/`)
-- **gh-pages**: apenas build estático (`dist/`: index.html, .wasm, .js, .css, _redirects, CNAME, `assets/`)
+- **gh-pages**: apenas build estático (`dist/`: index.html, 404.html, .wasm, .js, .css, _redirects, CNAME, sitemap.xml, `assets/`)
 - Build: `trunk build --release --public-url /`
-- `make deploy` gera `dist/` + `_redirects` + `CNAME`
+- `make deploy` gera `dist/` + `404.html` (cópia do index.html) + `_redirects` + `CNAME`
 - DNS: 4 registros A (GitHub IPs) + CNAME www → iuryadones.github.io
 
 ### GitHub Pages (configuração única)
@@ -39,7 +39,7 @@
 | `make run` | Servidor dev :8080 |
 | `make check` | Verifica compilação (wasm32) |
 | `make build` | Build produção → `dist/` |
-| `make deploy` | Build + gera `_redirects` + `CNAME` |
+| `make deploy` | Build + gera `404.html` + `_redirects` + `CNAME` |
 | `make clean` | Remove artefatos |
 
 ---
@@ -55,13 +55,15 @@ index.html (loading spinner + fonts + favicon 💆‍♀️)
             │    └── Switch<Route>
             │         ├── /        → HomePage      (Hero → Diferenciais → 3 Serviços → ProcessSteps → CTA → Instagram → Depoimentos)
             │         ├── /sobre   → AboutPage     (Header → Bio + Foto → Filosofia → Diferenciais → FAQ → CTA)
-            │         ├── /servicos → ServicesPage (Header → 9 Cards → FAQ → CTA)
-            │         ├── /contato → ContactPage   (Header → Info + WhatsApp rápido → Mapa)
-            │         └── /*       → NotFoundPage  (404 amigável)
-            ├── WhatsAppFloating (FAB canto inferior direito)
-            ├── WhatsAppMobileBar (sticky bar inferior, mobile only)
-            ├── Footer (grid 3-col: brand + serviços + links)
-            └── LGPDNotice (banner inferior, localStorage)
+│         ├── /servicos → ServicesPage (Header → 11 Cards → FAQ → CTA)
+│         ├── /contato → ContactPage   (Header → Info + WhatsApp rápido → Mapa)
+│         ├── /404     → NotFoundPage  (404 amigável)
+│         └── /*       → NotFoundPage  (catch-all)
+├── WhatsAppFloating (FAB canto inferior direito)
+├── WhatsAppMobileBar (sticky bar inferior, mobile only)
+├── Footer (grid 3-col: brand + serviços + links)
+├── LGPDNotice (banner inferior, checa localStorage no mount)
+└── MetaTags (set_page_meta via web_sys em cada página)
 ```
 
 ### Hierarquia de Componentes
@@ -84,11 +86,11 @@ App
 │   │   ├── ImagePlaceholder + Bio
 │   │   ├── PhilosophySection (3 cards: filosofia de trabalho)
 │   │   ├── DiferenciaisSection
-│   │   ├── FAQSection (accordion, 6 perguntas)
+│   │   ├── FAQSection (accordion, 9 perguntas)
 │   │   └── CTASection
 │   ├── ServicesPage
-│   │   ├── ServiceCard[] (9 serviços completos, duration badge)
-│   │   ├── FAQSection
+│   │   ├── ServiceCard[] (11 serviços completos, duration badge)
+│   │   ├── FAQSection (accordion, 9 perguntas)
 │   │   └── CTASection
 │   ├── ContactPage
 │   │   ├── WhatsApp (3 atalhos: Agendar, Dúvidas, Valores)
@@ -141,13 +143,13 @@ pub struct Service {
     pub duration: &'static str,     // ex: "60 min"
 }
 
-pub const SERVICES: &[Service];  // 9 serviços
+pub const SERVICES: &[Service];  // 11 serviços
 
 pub struct FAQItem {
     pub question: &'static str,
     pub answer: &'static str,
 }
-pub const FAQ: &[FAQItem];  // 6 perguntas
+pub const FAQ: &[FAQItem];  // 9 perguntas
 
 pub struct Diferencial {
     pub icon: &'static str,
@@ -167,11 +169,13 @@ pub struct SiteConfig;  // constants: PHONE, INSTAGRAM_URL, ADDRESS, HOURS, MAP_
 | relaxante | Massagem Relaxante | 60 min |
 | miofascial | Liberação Miofascial | 60 min |
 | drenagem | Drenagem Linfática | 60 min |
-| ventosa | Ventosaterapia | 45 min |
+| ventosa | Ventosaterapia | 60 min |
 | ritual-premium | Ritual Relax Premium | 90 min |
 | personalizadas | Terapias Personalizadas | 60-90 min |
 | medicina-chinesa | Medicina Chinesa | 60 min |
 | sensorial | Experiências Sensoriais | 60 min |
+| tantrica | Terapia Tântrica | 90 min |
+| escuta-ativa | Escuta Ativa | 60 min |
 
 ---
 
@@ -181,27 +185,29 @@ pub struct SiteConfig;  // constants: PHONE, INSTAGRAM_URL, ADDRESS, HOURS, MAP_
 site/
 ├── Cargo.toml / Trunk.toml / index.html / Makefile
 ├── src/
-│   ├── main.rs / app.rs / router.rs / models.rs
+│   ├── main.rs / app.rs / router.rs / models.rs / seo.rs
 │   ├── components/
 │   │   ├── mod.rs (registro público)
 │   │   ├── navbar.rs, hero.rs, service_card.rs
 │   │   ├── whatsapp_button.rs (WhatsAppLink + WhatsAppFloating)
 │   │   ├── cta_section.rs (props para variantes)
-│   │   ├── footer.rs (grid 3-col com serviços)
+│   │   ├── footer.rs (grid 3-col com serviços, ano dinâmico)
 │   │   ├── diferenciais.rs (4 cards)
 │   │   ├── process_steps.rs (4 passos + CTA)
 │   │   ├── instagram_section.rs (embed + link)
 │   │   ├── depoimentos.rs (placeholder)
 │   │   ├── faq_section.rs (accordion)
 │   │   ├── not_found.rs (404)
-│   │   └── lgpd_notice.rs (banner LGPD)
+│   │   └── lgpd_notice.rs (banner LGPD, checa localStorage)
 │   └── pages/
 │       ├── home.rs (Hero → Diferenciais → 3 Serviços → Steps → CTA → Instagram → Depoimentos)
 │       ├── sobre.rs (Bio → Filosofia → Diferenciais → FAQ → CTA)
-│       ├── servicos.rs (9 Cards → FAQ → CTA)
+│       ├── servicos.rs (11 Cards → FAQ → CTA)
 │       └── contato.rs (Info + 3 atalhos WhatsApp → Mapa)
-├── css/styles.css (~600 linhas)
-└── assets/images/ (placeholder para fotos reais)
+├── css/styles.css (~1068 linhas)
+├── assets/images/ (milena_guedes.jpeg real, 600×600)
+├── sitemap.xml (4 URLs)
+└── 404.html (gerado no deploy, fallback SPA)
 ```
 
 ---
@@ -213,9 +219,23 @@ site/
 - Active link via `use_route::<Route>()` comparando com o enum.
 - Scroll shadow via `Closure<dyn Fn()>` + `window.set_onscroll`.
 
+### SPA Routing (GitHub Pages)
+- `_redirects` (`/* /index.html 200`) funciona em alguns casos mas GH Pages nem sempre o processa.
+- `404.html` (cópia do `index.html` com `<base href="/">`) é o fallback confiável.
+- Gerado automaticamente por `make deploy`.
+- O `<base href="/">` garante que assets (JS, WASM, CSS) carreguem da raiz independente da rota.
+
+### SEO por Página (`set_page_meta`)
+- Módulo `src/seo.rs` com função `set_page_meta(title, description)`.
+- Chamada via `use_effect` em cada página (Home, Sobre, Serviços, Contato, 404).
+- Atualiza `<title>`, `<meta name="description">`, `<meta property="og:title">` e `<meta property="og:description">` via `web_sys::Document`.
+- Cada página tem title + description únicos.
+
 ### LGPD Notice
 - `web_sys::window().local_storage()` retorna `Result<Option<Storage>, JsValue>`.
 - Padrão: `if let Some(Ok(Some(storage))) = window().map(|w| w.local_storage())`.
+- No mount, verifica `localStorage.getItem("lgpd-accepted")` — se existir, banner não aparece.
+- `use_state` é inicializado com o resultado da checagem, não com `true` fixo.
 
 ### WhatsApp
 - Link usa `js_sys::encode_uri_component` no texto da mensagem.
@@ -224,6 +244,9 @@ site/
 
 ### Google Maps
 - Embed sem API key: `https://www.google.com/maps?q={endereço_url}&output=embed`.
+
+### Footer
+- Ano do copyright dinâmico via `js_sys::Date::new_0().get_full_year()` — não precisa atualizar manualmente.
 
 ### CSS
 - Scroll-triggered animations: usar `IntersectionObserver` via web-sys ou fadeUp universal.
@@ -281,7 +304,7 @@ Diferencial {
 --beige: #F0EADE;        /* fundos alternados */
 --beige-light: #F8F4ED;  /* fundo principal */
 --black: #1C1C1C;        /* texto, footer */
---black-soft: #5A5A5A;   /* texto secundário */
+--black-soft: #3A3A3A;   /* texto secundário (contraste WCAG AA) */
 --white: #FFFFFF;         /* cards */
 --whatsapp-green: #25D366; /* mantido */
 ```
@@ -304,7 +327,7 @@ Diferencial {
 | `expected IString, found &str` | `#[prop_or("texto")]` com `AttrValue` | Usar `#[prop_or_else(|| AttrValue::from("texto"))]` |
 | `cannot find type JsCast` | Falta import | `use wasm_bindgen::JsCast;` |
 | `Closure cannot be captured` | Escopo do closure | Clonar variáveis com `.clone()` antes do `move` |
-| Rota SPA quebra no GH Pages | Sem `_redirects` | `make deploy` gera o arquivo automaticamente |
+| Rota SPA quebra no GH Pages | `_redirects` não aplicado ou cache do GH Pages | `make deploy` gera `_redirects` + `404.html` (fallback). `404.html` é cópia do `index.html` com `<base href="/">` |
 | Link não navega | Usou `<Link>` sem `onclick` | Usar `<a>` + `use_navigator()` + `prevent_default` |
 | `Children` vs `Html` | Props de children | Usar `Children` no struct e `for props.children.iter()` no template |
 

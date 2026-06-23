@@ -1,9 +1,17 @@
 use yew::prelude::*;
 use crate::models::SiteConfig;
 use crate::components::whatsapp_button::WhatsAppLink;
+use crate::seo::set_page_meta;
 
 #[function_component(ContactPage)]
 pub fn contact_page() -> Html {
+    use_effect(|| {
+        set_page_meta(
+            "Contato — Milena Guedes | Massoterapia Integrativa",
+            "Agende sua sessão pelo WhatsApp, visite o espaço em Candeias — Jaboatão dos Guararapes, ou siga @milenaguedesintegrativa no Instagram.",
+        );
+        || {}
+    });
     html! {
         <>
             <section class="page-header">

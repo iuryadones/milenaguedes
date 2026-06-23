@@ -9,9 +9,18 @@ use crate::components::depoimentos::DepoimentosSection;
 use crate::models::{SERVICES, Service};
 use crate::components::service_card::ServiceCard;
 use crate::router::Route;
+use crate::seo::set_page_meta;
 
 #[function_component(HomePage)]
 pub fn home_page() -> Html {
+    use_effect(|| {
+        set_page_meta(
+            "Milena Guedes — Massoterapia Integrativa",
+            "Seu refúgio de relaxamento e renovação. Massoterapia Integrativa e experiências sensoriais em Jaboatão dos Guararapes.",
+        );
+        || {}
+    });
+
     let featured: Vec<&Service> = SERVICES.iter().take(3).collect();
 
     html! {

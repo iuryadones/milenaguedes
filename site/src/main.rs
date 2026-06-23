@@ -3,6 +3,7 @@ mod components;
 mod models;
 mod pages;
 mod router;
+mod seo;
 
 use app::App;
 

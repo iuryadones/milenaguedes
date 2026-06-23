@@ -3,9 +3,17 @@ use crate::models::SERVICES;
 use crate::components::service_card::ServiceCard;
 use crate::components::cta_section::CTASection;
 use crate::components::faq_section::FAQSection;
+use crate::seo::set_page_meta;
 
 #[function_component(ServicesPage)]
 pub fn services_page() -> Html {
+    use_effect(|| {
+        set_page_meta(
+            "Serviços — Milena Guedes | Massoterapia Integrativa",
+            "Massagem Terapêutica, Relaxante, Ventosaterapia, Drenagem, Terapia Tântrica, Escuta Ativa e mais. Técnicas integrativas em Jaboatão dos Guararapes.",
+        );
+        || {}
+    });
     html! {
         <>
             <section class="page-header">

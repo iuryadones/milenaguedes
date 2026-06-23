@@ -117,6 +117,18 @@ pub const FAQ: &[FAQItem] = &[
         question: "Nunca fiz massagem antes. Tem problema?",
         answer: "Nenhum! Muitos clientes chegam sem nunca ter feito e se encantam. Milena guia tudo com calma, explicando cada passo. Sua primeira vez será uma experiência inesquecível.",
     },
+    FAQItem {
+        question: "O que é a Terapia Tântrica?",
+        answer: "A Terapia Tântrica é um convite para desacelerar, sentir e se reconectar com o próprio corpo. Diferente do que muitos imaginam, é uma prática de autoconhecimento e liberação emocional que ajuda a reduzir ansiedade, liberar bloqueios e aumentar a autoestima — tudo em um ambiente seguro, respeitoso e acolhedor.",
+    },
+    FAQItem {
+        question: "Preciso tirar a roupa na Terapia Tântrica?",
+        answer: "Não. Você permanece coberto com lençóis durante toda a sessão, e apenas a área sendo trabalhada é descoberta. O respeito ao seu limite e conforto é absoluto. Milena conduz tudo com total transparência e cuidado, garantindo que você se sinta segura em cada etapa.",
+    },
+    FAQItem {
+        question: "O que é a Escuta Ativa e como funciona?",
+        answer: "A Escuta Ativa é um espaço seguro onde Milena ouve você sem julgamentos, com acolhimento e presença. Combinando técnicas de psicanálise com a escuta terapêutica, a sessão ajuda a liberar tensões emocionais que seu corpo guarda — muitas vezes sem que você perceba. Uma conversa que cura.",
+    },
 ];
 
 pub struct Diferencial {

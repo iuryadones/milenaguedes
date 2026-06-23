@@ -49,7 +49,7 @@ pub fn footer() -> Html {
                     </div>
                 </div>
                 <div class="footer-copy">
-                    <p>{ "© 2026 Milena Guedes — Massoterapia Integrativa. Todos os direitos reservados." }</p>
+                    <p>{ format!("© {} Milena Guedes — Massoterapia Integrativa. Todos os direitos reservados.", js_sys::Date::new_0().get_full_year()) }</p>
                 </div>
             </div>
         </footer>

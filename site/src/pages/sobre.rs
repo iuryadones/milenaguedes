@@ -2,9 +2,17 @@ use yew::prelude::*;
 use crate::components::cta_section::CTASection;
 use crate::components::faq_section::FAQSection;
 use crate::components::diferenciais::DiferenciaisSection;
+use crate::seo::set_page_meta;
 
 #[function_component(AboutPage)]
 pub fn about_page() -> Html {
+    use_effect(|| {
+        set_page_meta(
+            "Sobre — Milena Guedes | Massoterapia Integrativa",
+            "Conheça Milena Guedes, massoterapeuta integrativa especialista em dores emocionais e físicas com formação em Medicina Chinesa.",
+        );
+        || {}
+    });
     html! {
         <>
             <section class="page-header">

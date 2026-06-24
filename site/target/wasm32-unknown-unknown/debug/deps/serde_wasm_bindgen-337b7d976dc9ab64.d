@@ -1,0 +1,9 @@
+/home/xavier/Documentos/colab/milena_guedes_massoterapeuta/site/site/target/wasm32-unknown-unknown/debug/deps/serde_wasm_bindgen-337b7d976dc9ab64.d: /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/lib.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/de.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/error.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/ser.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/../README.md
+
+/home/xavier/Documentos/colab/milena_guedes_massoterapeuta/site/site/target/wasm32-unknown-unknown/debug/deps/libserde_wasm_bindgen-337b7d976dc9ab64.rmeta: /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/lib.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/de.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/error.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/ser.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/../README.md
+
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/lib.rs:
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/de.rs:
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/error.rs:
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/ser.rs:
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-wasm-bindgen-0.5.0/src/../README.md:

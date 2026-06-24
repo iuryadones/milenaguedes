@@ -1,0 +1,10 @@
+/home/xavier/Documentos/colab/milena_guedes_massoterapeuta/site/site/target/wasm32-unknown-unknown/debug/deps/gloo_console-1d5aeaa39bf66c2b.d: /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/lib.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/console_dbg.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/counter.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/externs.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/macros.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/timer.rs
+
+/home/xavier/Documentos/colab/milena_guedes_massoterapeuta/site/site/target/wasm32-unknown-unknown/debug/deps/libgloo_console-1d5aeaa39bf66c2b.rmeta: /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/lib.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/console_dbg.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/counter.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/externs.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/macros.rs /home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/timer.rs
+
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/lib.rs:
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/console_dbg.rs:
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/counter.rs:
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/externs.rs:
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/macros.rs:
+/home/xavier/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-console-0.2.3/src/timer.rs:

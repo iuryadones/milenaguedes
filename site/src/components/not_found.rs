@@ -11,16 +11,16 @@ pub fn not_found_page() -> Html {
         || {}
     });
     html! {
-        <section class="page-header" style="min-height: 60vh; display: flex; align-items: center; justify-content: center;">
-            <div class="container" style="text-align: center;">
-                <h1 style="font-size: 4rem; margin-bottom: 0.5rem;">{ "404" }</h1>
-                <p style="font-size: 1.2rem; color: var(--black-soft, #3A3A3A); margin-bottom: 1rem;">
+        <section class="page-header not-found-section">
+            <div class="container text-center">
+                <h1 class="not-found-title">{ "404" }</h1>
+                <p class="not-found-text">
                     { "Página não encontrada" }
                 </p>
-                <p style="margin-bottom: 2rem; color: var(--black-soft, #3A3A3A);">
+                <p class="not-found-text-sm">
                     { "A página que você procura não existe ou foi movida." }
                 </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <div class="not-found-actions">
                     <Link<Route> to={Route::Home} classes="btn btn-primary">
                         { "Voltar ao início" }
                     </Link<Route>>

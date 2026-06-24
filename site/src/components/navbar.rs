@@ -9,12 +9,12 @@ use web_sys::window;
 pub fn navbar() -> Html {
     let collapsed = use_state(|| true);
     let scrolled = use_state(|| false);
-    let navigator = use_navigator().unwrap();
+    let navigator = use_navigator().expect("Navbar must be used within BrowserRouter");
 
     {
         let scrolled = scrolled.clone();
         use_effect_with((), move |_| {
-            let window = window().unwrap();
+            let window = window().expect("no window");
             let window2 = window.clone();
             let scrolled_clone = scrolled.clone();
             let closure = Closure::<dyn Fn()>::new(move || {
@@ -65,7 +65,7 @@ pub fn navbar() -> Html {
                 } class="navbar-logo">
                     { "Milena Guedes" }
                 </a>
-                <button class="navbar-hamburger" onclick={toggle_nav} aria-label="Menu">
+                <button class="navbar-hamburger" onclick={toggle_nav} aria-label="Menu" aria-expanded={(!*collapsed).to_string()}>
                     <span></span>
                     <span></span>
                     <span></span>

@@ -6,7 +6,7 @@ use crate::components::diferenciais::DiferenciaisSection;
 use crate::components::process_steps::ProcessSteps;
 use crate::components::instagram_section::InstagramSection;
 use crate::components::depoimentos::DepoimentosSection;
-use crate::models::{SERVICES, Service};
+use crate::models::SERVICES;
 use crate::components::service_card::ServiceCard;
 use crate::router::Route;
 use crate::seo::set_page_meta;
@@ -21,7 +21,7 @@ pub fn home_page() -> Html {
         || {}
     });
 
-    let featured: Vec<&Service> = SERVICES.iter().take(3).collect();
+    let featured: Vec<_> = SERVICES.iter().take(3).collect();
 
     html! {
         <>
@@ -36,7 +36,7 @@ pub fn home_page() -> Html {
                             html! { <ServiceCard key={s.id} service={s.clone()} /> }
                         }).collect::<Html>() }
                     </div>
-                    <div class="text-center" style="margin-top: 2rem;">
+                    <div class="text-center home-services-link">
                         <Link<Route> to={Route::Servicos} classes="btn btn-outline">
                             { "Ver todos os serviços →" }
                         </Link<Route>>

@@ -10,25 +10,16 @@ pub fn instagram_section() -> Html {
                 <p class="section-subtitle">
                     { "Conteúdo diário sobre autocuidado, bem-estar e massoterapia integrativa" }
                 </p>
-                <div class="instagram-embed">
-                    <iframe
-                        src="https://www.instagram.com/milenaguedesintegrativa/embed"
-                        width="100%"
-                        height="480"
-                        frameborder="0"
-                        scrolling="no"
-                        allowtransparency="true"
-                        style="border-radius: 16px;"
-                        title="Perfil do Instagram @milenaguedesintegrativa"
-                    >
-                    </iframe>
-                </div>
-                <div class="text-center" style="margin-top: 1.5rem;">
+                <div class="instagram-fallback">
+                    <span class="instagram-fallback-icon">{ "📸" }</span>
+                    <p class="instagram-fallback-text">
+                        { "Siga @milenaguedesintegrativa no Instagram e acompanhe dicas diárias de bem-estar, autocuidado e massoterapia integrativa." }
+                    </p>
                     <a
                         href={SiteConfig::INSTAGRAM_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="btn btn-outline"
+                        class="btn btn-primary"
                     >
                         { "Seguir @milenaguedesintegrativa" }
                     </a>

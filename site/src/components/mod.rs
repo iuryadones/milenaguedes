@@ -1,4 +1,5 @@
 pub mod navbar;
+pub mod icons;
 pub mod footer;
 pub mod hero;
 pub mod service_card;

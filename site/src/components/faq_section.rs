@@ -23,14 +23,17 @@ pub fn faq_section() -> Html {
                                 }
                             })
                         };
+                        let answer_id = format!("faq-answer-{}", i);
                         html! {
                             <div class={classes!("faq-item", is_open.then(|| "faq-open"))}>
-                                <button class="faq-question" onclick={toggle}>
+                                <button class="faq-question" onclick={toggle}
+                                    aria-expanded={is_open.to_string()}
+                                    aria-controls={answer_id.clone()}>
                                     <span>{ item.question }</span>
                                     <span class="faq-arrow">{ if is_open { "−" } else { "+" } }</span>
                                 </button>
                                 if is_open {
-                                    <div class="faq-answer">
+                                    <div class="faq-answer" id={answer_id}>
                                         <p>{ item.answer }</p>
                                     </div>
                                 }

@@ -27,7 +27,7 @@ pub fn process_steps() -> Html {
                         }
                     }).collect::<Html>() }
                 </div>
-                <div class="text-center" style="margin-top: 2.5rem;">
+                <div class="text-center process-cta">
                     <WhatsAppLink
                         message={"Olá Milena! Gostaria de agendar minha primeira sessão."}
                         classes="btn btn-primary btn-lg"

@@ -66,7 +66,7 @@ pub fn contact_page() -> Html {
                             </a>
                             <a href={SiteConfig::PLACE_URL}
                                target="_blank" rel="noopener noreferrer"
-                               class="btn btn-outline btn-sm" style="margin-top: 0.5rem;">
+                               class="btn btn-outline btn-sm contato-map-link">
                                 { "Abrir no Google Maps" }
                             </a>
                         </div>
@@ -78,7 +78,7 @@ pub fn contact_page() -> Html {
                     <div class="contact-map">
                         <iframe
                             src={SiteConfig::MAP_EMBED}
-                            width="100%" height="380" style="border:0;"
+                            width="100%" height="380"
                             allowfullscreen={true}
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"

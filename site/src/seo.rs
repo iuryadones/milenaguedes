@@ -1,9 +1,10 @@
 pub fn set_page_meta(title: &str, description: &str) {
-    let doc = web_sys::window().unwrap().document().unwrap();
+    let window = web_sys::window().expect("no window");
+    let doc = window.document().expect("no document");
     doc.set_title(title);
 
     let update_attr = |selector: &str, attr: &str, value: &str| {
-        if let Some(el) = doc.query_selector(selector).unwrap() {
+        if let Ok(Some(el)) = doc.query_selector(selector) {
             let _ = el.set_attribute(attr, value);
         }
     };
@@ -11,4 +12,7 @@ pub fn set_page_meta(title: &str, description: &str) {
     update_attr("meta[name='description']", "content", description);
     update_attr("meta[property='og:title']", "content", title);
     update_attr("meta[property='og:description']", "content", description);
+    update_attr("meta[property='og:url']", "content", "");
+    update_attr("meta[property='og:image']", "content", "");
+    update_attr("meta[property='og:site_name']", "content", "");
 }

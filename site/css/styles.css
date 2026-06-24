@@ -1,6 +1,6 @@
 :root {
   --gold: #C4A33D;
-  --gold-dark: #9E8328;
+  --gold-dark: #7A6B1F;
   --gold-light: #D4B351;
   --beige: #F0EADE;
   --beige-light: #F8F4ED;
@@ -229,6 +229,12 @@ main {
   padding: 4px;
 }
 
+.navbar-hamburger:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .navbar-hamburger span {
   width: 25px;
   height: 2px;
@@ -332,7 +338,7 @@ main {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
@@ -509,18 +515,87 @@ main {
   line-height: 1.5;
 }
 
+/* ─── Not Found ─── */
+
+.not-found-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found-title {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.not-found-text {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--black-soft, #3A3A3A);
+}
+
+.not-found-text-sm {
+  margin-bottom: 2rem;
+  color: var(--black-soft, #3A3A3A);
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Home ─── */
+
+.home-services-link {
+  margin-top: 2rem;
+}
+
+/* ─── Process ─── */
+
+.process-cta {
+  margin-top: 2.5rem;
+}
+
+/* ─── Contato ─── */
+
+.contato-map-link {
+  margin-top: 0.5rem;
+}
+
+.contact-map iframe {
+  border: 0;
+}
+
 /* ─── Instagram ─── */
 
 .section-instagram {
   background: var(--white);
 }
 
-.instagram-embed {
+.instagram-fallback {
   max-width: 500px;
   margin: 0 auto;
+  text-align: center;
+  padding: 3rem 2rem;
+  border: 2px dashed var(--gold-light);
   border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background: var(--beige-light);
+}
+
+.instagram-fallback-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.instagram-fallback-text {
+  color: var(--black-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
 /* ─── Depoimentos ─── */
@@ -785,6 +860,7 @@ main {
   z-index: 999;
   transition: all 0.3s ease;
   animation: pulse 2s infinite;
+  will-change: box-shadow;
 }
 
 .whatsapp-floating:hover {
@@ -795,6 +871,15 @@ main {
 @keyframes pulse {
   0%, 100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
   50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ─── WhatsApp Mobile Bar ─── */
@@ -904,7 +989,7 @@ main {
 }
 
 .footer-col ul a {
-  color: var(--black-soft);
+  color: var(--gold-light);
   font-size: 0.88rem;
   transition: color 0.2s;
 }
@@ -917,7 +1002,8 @@ main {
   border-top: 1px solid rgba(240, 234, 222, 0.15);
   padding-top: 1.5rem;
   font-size: 0.85rem;
-  color: var(--black-soft);
+  color: var(--gold-light);
+  opacity: 0.7;
 }
 
 /* ─── Section Alternating Backgrounds ─── */

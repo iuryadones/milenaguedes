@@ -40,6 +40,7 @@
 | `make check` | Verifica compilação (wasm32) |
 | `make build` | Build produção → `dist/` |
 | `make deploy` | Build + gera `dist/404.html` + `dist/_redirects` + `dist/CNAME` |
+| `make deploy-gh-pages` | Build + commit master + cria gh-pages com build limpo na raiz + push forced |
 | `make clean` | Remove artefatos |
 
 ---
@@ -227,9 +228,11 @@ site/
 - Gerado automaticamente por `make deploy`.
 - O `<base href="/">` garante que assets (JS, WASM, CSS) carreguem da raiz independente da rota.
 
-### SEO por Página (`set_page_meta`)
-- Módulo `src/seo.rs` com função `set_page_meta(title, description)`.
-- Chamada via `use_effect` em cada página (Home, Sobre, Serviços, Contato, 404).
+### SEO por Página (`set_page_meta` / `set_page_meta_with_noindex`)
+- Módulo `src/seo.rs` com duas funções: `set_page_meta(title, description)` (legado, delega para `set_page_meta_with_noindex`) e `set_page_meta_with_noindex(title, description, noindex: bool)`.
+- `set_page_meta_with_noindex` gerencia `meta[name='robots']`: quando `noindex=true`, seta `content="noindex"` (página oculta do Google); quando `false`, remove o tag do DOM.
+- Chamada via `use_effect_with(())` em cada página (Home, Sobre, Serviços, Contato, 404).
+- NotFoundPage usa `set_page_meta_with_noindex("Página não encontrada — Milena Guedes", ..., true)` — não indexada.
 - Atualiza `<title>`, `<meta name="description">`, `<meta property="og:title">` e `<meta property="og:description">` via `web_sys::Document`.
 - Cada página tem title + description únicos.
 
@@ -344,4 +347,5 @@ make run        # http://localhost:8080
 make check      # Verifica compilação
 make build      # Build produção
 make deploy     # Build + gera 404.html + _redirects + CNAME → copiar dist/ para gh-pages
+make deploy-gh-pages  # Build + deploy direto para gh-pages (commit + push master, limpa gh-pages, push forced)
 ```

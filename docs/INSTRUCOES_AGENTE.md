@@ -6,9 +6,9 @@
 ## Deploy
 - **Domínio:** milenaguedes.com
 - **master**: código fonte (Rust + CSS + docs + `assets/`)
-- **gh-pages**: apenas build estático (`dist/`: index.html, 404.html, .wasm, .js, .css, _redirects, CNAME, sitemap.xml, `assets/`)
+- **gh-pages**: apenas build estático na raiz (index.html, 404.html, .wasm, .js, .css, _redirects, CNAME, sitemap.xml, `assets/`)
 - Build: `trunk build --release --public-url /`
-- `make deploy` gera `dist/` + `404.html` (cópia do index.html) + `_redirects` + `CNAME`
+- `make deploy` = `trunk build --release` + gera `dist/404.html` + `dist/_redirects` + `dist/CNAME`
 - DNS: 4 registros A (GitHub IPs) + CNAME www → iuryadones.github.io
 
 ### GitHub Pages (configuração única)
@@ -39,7 +39,7 @@
 | `make run` | Servidor dev :8080 |
 | `make check` | Verifica compilação (wasm32) |
 | `make build` | Build produção → `dist/` |
-| `make deploy` | Build + gera `404.html` + `_redirects` + `CNAME` |
+| `make deploy` | Build + gera `dist/404.html` + `dist/_redirects` + `dist/CNAME` |
 | `make clean` | Remove artefatos |
 
 ---
@@ -59,8 +59,9 @@ index.html (loading spinner + fonts + favicon 💆‍♀️)
 │         ├── /contato → ContactPage   (Header → Info + WhatsApp rápido → Mapa)
 │         ├── /404     → NotFoundPage  (404 amigável)
 │         └── /*       → NotFoundPage  (catch-all)
+├── skip-link ("Pular para o conteúdo", logo após BrowserRouter)
 ├── WhatsAppFloating (FAB canto inferior direito)
-├── WhatsAppMobileBar (sticky bar inferior, mobile only)
+├── WhatsAppMobileBar (inline `<a>` em app.rs, sticky bar inferior, mobile only)
 ├── Footer (grid 3-col: brand + serviços + links)
 ├── LGPDNotice (banner inferior, checa localStorage no mount)
 └── MetaTags (set_page_meta via web_sys em cada página)
@@ -70,6 +71,7 @@ index.html (loading spinner + fonts + favicon 💆‍♀️)
 
 ```
 App
+├── skip-link ("Pular para o conteúdo", logo após BrowserRouter)
 ├── Navbar (use_route + use_navigator, scroll shadow Closure)
 │   ├── Logo (link Home)
 │   └── NavLinks + WhatsApp btn
@@ -80,10 +82,10 @@ App
 │   │   ├── ServiceCard[] (3 destaques)
 │   │   ├── ProcessSteps (4 passos: Escolha → Agende → Chegue → Relaxe)
 │   │   ├── CTASection (props: title, subtitle, message, button)
-│   │   ├── InstagramSection (embed + link)
+│   │   ├── InstagramSection (ícone + texto + CTA, sem embed)
 │   │   └── DepoimentosSection (placeholder)
 │   ├── AboutPage
-│   │   ├── ImagePlaceholder + Bio
+│   │   ├── Bio + Foto (img)
 │   │   ├── PhilosophySection (3 cards: filosofia de trabalho)
 │   │   ├── DiferenciaisSection
 │   │   ├── FAQSection (accordion, 9 perguntas)
@@ -96,11 +98,11 @@ App
 │   │   ├── WhatsApp (3 atalhos: Agendar, Dúvidas, Valores)
 │   │   ├── Instagram
 │   │   ├── Endereço + Horários
-│   │   └── Google Maps (embed, query-based, sem API key)
+│   │   └── Google Maps (embed, place_id/pb, sem API key)
 │   └── NotFoundPage (404 + links Home/WhatsApp)
 ├── Footer (3-col grid: Brand+WhatsApp | Serviços(5) | Links)
 ├── WhatsAppFloating (FAB position:fixed, wa.me)
-├── WhatsAppMobileBar (display:none desktop, flex mobile sticky bottom)
+├── WhatsAppMobileBar (inline `<a>`, display:none desktop, flex mobile sticky bottom)
 └── LGPDNotice (banner fixed bottom, localStorage)
 ```
 
@@ -122,7 +124,7 @@ App
 | `CTASection` | `button` | `AttrValue` | "Fale com Milena..." | Texto do botão |
 | `DiferenciaisSection` | — | — | — | Usa `DIFERENCIAIS` (models.rs) |
 | `ProcessSteps` | — | — | — | Steps fixos + CTA |
-| `InstagramSection` | — | — | — | Embed + link |
+| `InstagramSection` | — | — | — | Ícone + texto + CTA (sem embed) |
 | `DepoimentosSection` | — | — | — | Placeholder |
 | `FAQSection` | — | — | — | Accordion, usa `FAQ` (models.rs) |
 | `Navbar` | — | — | — | use_route + use_navigator |
@@ -158,7 +160,7 @@ pub struct Diferencial {
 }
 pub const DIFERENCIAIS: &[Diferencial];  // 4 diferenciais
 
-pub struct SiteConfig;  // constants: PHONE, INSTAGRAM_URL, ADDRESS, HOURS, MAP_EMBED
+pub struct SiteConfig;  // constants: PHONE, PHONE_DISPLAY, INSTAGRAM_URL, ADDRESS, PLACE_NAME, PLACE_URL, HOURS, MAP_EMBED
 ```
 
 ### Serviços (descrições persuasivas):
@@ -188,13 +190,13 @@ site/
 │   ├── main.rs / app.rs / router.rs / models.rs / seo.rs
 │   ├── components/
 │   │   ├── mod.rs (registro público)
-│   │   ├── navbar.rs, hero.rs, service_card.rs
+│   │   ├── navbar.rs, hero.rs, service_card.rs, icons.rs (SVGs)
 │   │   ├── whatsapp_button.rs (WhatsAppLink + WhatsAppFloating)
 │   │   ├── cta_section.rs (props para variantes)
 │   │   ├── footer.rs (grid 3-col com serviços, ano dinâmico)
 │   │   ├── diferenciais.rs (4 cards)
 │   │   ├── process_steps.rs (4 passos + CTA)
-│   │   ├── instagram_section.rs (embed + link)
+│   │   ├── instagram_section.rs (ícone + texto + CTA, sem embed)
 │   │   ├── depoimentos.rs (placeholder)
 │   │   ├── faq_section.rs (accordion)
 │   │   ├── not_found.rs (404)
@@ -204,7 +206,7 @@ site/
 │       ├── sobre.rs (Bio → Filosofia → Diferenciais → FAQ → CTA)
 │       ├── servicos.rs (11 Cards → FAQ → CTA)
 │       └── contato.rs (Info + 3 atalhos WhatsApp → Mapa)
-├── css/styles.css (~1068 linhas)
+├── css/styles.css (1154 linhas)
 ├── assets/images/ (milena_guedes.jpeg real, 600×600)
 ├── sitemap.xml (4 URLs)
 └── 404.html (gerado no deploy, fallback SPA)
@@ -243,7 +245,7 @@ site/
 - FAB global + mobile sticky bar + inline buttons.
 
 ### Google Maps
-- Embed sem API key: `https://www.google.com/maps?q={endereço_url}&output=embed`.
+- Embed sem API key: `https://www.google.com/maps/embed?pb={place_id}` com `place_id` vinculado ao Google Maps Place ID.
 
 ### Footer
 - Ano do copyright dinâmico via `js_sys::Date::new_0().get_full_year()` — não precisa atualizar manualmente.
@@ -299,7 +301,7 @@ Diferencial {
 ```css
 /* css/styles.css — :root */
 --gold: #C4A33D;         /* botões, CTAs, acentos */
---gold-dark: #9E8328;    /* hover/active */
+--gold-dark: #7A6B1F;    /* hover/active (contraste WCAG AA) */
 --gold-light: #D4B351;   /* badges, tags sutis */
 --beige: #F0EADE;        /* fundos alternados */
 --beige-light: #F8F4ED;  /* fundo principal */
@@ -341,5 +343,5 @@ make run        # http://localhost:8080
 # ... editar código ...
 make check      # Verifica compilação
 make build      # Build produção
-make deploy     # Build + _redirects → copiar dist/ para gh-pages
+make deploy     # Build + gera 404.html + _redirects + CNAME → copiar dist/ para gh-pages
 ```

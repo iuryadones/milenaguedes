@@ -6,7 +6,7 @@ use crate::seo::set_page_meta;
 
 #[function_component(AboutPage)]
 pub fn about_page() -> Html {
-    use_effect(|| {
+    use_effect_with((), |_| {
         set_page_meta(
             "Sobre — Milena Guedes | Massoterapia Integrativa",
             "Conheça Milena Guedes, massoterapeuta integrativa especialista em dores emocionais e físicas com formação em Medicina Chinesa.",

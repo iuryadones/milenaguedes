@@ -5,7 +5,7 @@ use crate::seo::set_page_meta;
 
 #[function_component(ContactPage)]
 pub fn contact_page() -> Html {
-    use_effect(|| {
+    use_effect_with((), |_| {
         set_page_meta(
             "Contato — Milena Guedes | Massoterapia Integrativa",
             "Agende sua sessão pelo WhatsApp, visite o espaço em Candeias — Jaboatão dos Guararapes, ou siga @milenaguedesintegrativa no Instagram.",

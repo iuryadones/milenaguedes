@@ -2,12 +2,12 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 use crate::router::Route;
 use crate::components::whatsapp_button::WhatsAppLink;
-use crate::seo::set_page_meta;
+use crate::seo::set_page_meta_with_noindex;
 
 #[function_component(NotFoundPage)]
 pub fn not_found_page() -> Html {
-    use_effect(|| {
-        set_page_meta("Página não encontrada — Milena Guedes", "A página que você procura não existe. Volte ao início ou entre em contato pelo WhatsApp.");
+    use_effect_with((), |_| {
+        set_page_meta_with_noindex("Página não encontrada — Milena Guedes", "A página que você procura não existe. Volte ao início ou entre em contato pelo WhatsApp.", true);
         || {}
     });
     html! {

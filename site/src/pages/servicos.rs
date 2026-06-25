@@ -7,7 +7,7 @@ use crate::seo::set_page_meta;
 
 #[function_component(ServicesPage)]
 pub fn services_page() -> Html {
-    use_effect(|| {
+    use_effect_with((), |_| {
         set_page_meta(
             "Serviços — Milena Guedes | Massoterapia Integrativa",
             "Massagem Terapêutica, Relaxante, Ventosaterapia, Drenagem, Terapia Tântrica, Escuta Ativa e mais. Técnicas integrativas em Jaboatão dos Guararapes.",

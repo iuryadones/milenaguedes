@@ -87,7 +87,7 @@ App
 │   │   └── DepoimentosSection (placeholder)
 │   ├── AboutPage
 │   │   ├── Bio + Foto (img)
-│   │   ├── PhilosophySection (3 cards: filosofia de trabalho)
+│   │   ├── Filosofia (3 cards inline)
 │   │   ├── DiferenciaisSection
 │   │   ├── FAQSection (accordion, 9 perguntas)
 │   │   └── CTASection
